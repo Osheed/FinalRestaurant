@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:outputStylesheet library="css" name="css/style.css" />
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<br></br>
+			<h:form>
+				<h:outputLabel style="font-weight:bold; margin-left:80px" value="#{messages.registerOwnerLabel}"></h:outputLabel>
+				<h:panelGrid cellspacing="4" cellpadding="4" style="padding: 15px 0 0 0;" columns="2" layout="grid">
+					<h:outputText value="#{messages.lastnameLabel}" />
+					<h:inputText value="#{registrationBean.lastname}"></h:inputText>
+	
+					<h:outputText value="#{messages.firstnameLabel}" />
+					<h:inputText value="#{registrationBean.firstname}"></h:inputText>
+	
+					<h:outputText value="#{messages.phoneLabel}" />
+					<h:inputText value="#{registrationBean.phone}"></h:inputText>
+	
+					<h:outputText value="#{messages.emailLabel}" />
+					<h:inputText value="#{registrationBean.email}"></h:inputText>
+	
+					<h:outputText value="#{messages.passwordLabel}" />
+					<h:inputSecret value="#{registrationBean.password}"></h:inputSecret>
+	
+					<h:outputText value="#{messages.confirmPasswordLabel}" />
+					<h:inputSecret value="#{registrationBean.confirmPassword}"></h:inputSecret>
+				</h:panelGrid>
+				<br></br>
+				<h:commandButton action="#{registrationBean.registration}" value="#{messages.saveNewOwnerRegBtn}" />
+				<h:commandButton action="#{registrationBean.returnRegister}" value="#{messages.return}" />
+				<h:outputText style="color:red;" value="#{registrationBean.registerInformation}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

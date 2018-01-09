@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	    <ui:define name="content">
+	        <br></br>
+	        <h:form>
+		        <h:outputLabel style="font-weight:bold; margin-left:80px" value="#{registrationBean.ownerTitleLabel}"></h:outputLabel>			
+				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="2" layout="grid">
+					<h:outputText value="#{messages.lastnameLabel}" />
+					<h:outputText value="#{registrationBean.owner.lastname}"></h:outputText>
+					
+					<h:outputText value="#{messages.firstnameLabel}" />
+					<h:outputText value="#{registrationBean.owner.firstname}"></h:outputText>
+	
+					<h:outputText value="#{messages.phoneLabel}" />
+					<h:outputText value="#{registrationBean.owner.phone}"></h:outputText>
+	
+					<h:outputText value="#{messages.emailLabel}" />
+					<h:outputText value="#{registrationBean.owner.email}"></h:outputText>
+			    </h:panelGrid>
+				<br></br>
+				<table style="border: 1px solid black; border-collapse: collapse; margin:15px 0 0 0;">
+					<thead>
+						<tr style="border: 1px solid black; padding: 8px; background:#0371A8; color:white;">
+							<th style="border: 1px solid black; padding: 8px;">Restaurant Name</th>
+							<th style="border: 1px solid black;padding: 8px;">Address</th>
+							<th style="border: 1px solid black;padding: 8px;">Post code</th>
+							<th style="border: 1px solid black;padding: 8px;">Country</th>
+							<th style="border: 1px solid black;padding: 8px;"> </th>
+							<th style="border: 1px solid black;padding: 8px;"> </th>
+						</tr>
+					</thead>
+					<ui:repeat value="#{registrationBean.restaurants}" var="field">
+						<tr style="border: 1px solid black;">
+							<td style="border: 1px solid black;padding: 5px;">#{field.name_restaurant}</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.address}</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.postcode}</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.country}</td>
+							<td>
+								<h:commandButton action="#{registrationBean.removeRestaurant(field)}" value="#{messages.removeBtn}" />
+							</td>
+							<td>
+								<h:commandButton action="#{registrationBean.editRestaurant(field)}" value="#{messages.editBtn}" />
+							</td>
+						</tr>
+					</ui:repeat>
+				</table>
+				<br><h:outputText style="color:red;" value="#{registrationBean.manageDataInformation}" /></br>
+				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="3" layout="grid">
+					<h:commandButton action="#{registrationBean.addRestaurantPage}" value="add Restaurant" />
+					<h:commandButton action="#{registrationBean.details}" value="Details" />
+					<h:commandButton action="#{registrationBean.logout}" value="#{messages.logoutBtn}" />
+				</h:panelGrid>
+	        </h:form>
+	    </ui:define>
+	</ui:composition>
+</html>

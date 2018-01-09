@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:outputStylesheet library="css" name="css/style.css" />
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<h:outputLabel style="font-weight:bold; margin-left:80px" value="#{messages.registerRestLabel}"></h:outputLabel>
+				<h:panelGrid cellspacing="4" cellpadding="4" columns="2" style="padding:15px 0 0 0;" layout="grid">
+					<h:outputText value="#{messages.nameRestLabel}" />
+					<h:inputText value="#{registrationBean.nameR}"></h:inputText>
+	
+					<h:outputText value="#{messages.addressLabel}" />
+					<h:inputText value="#{registrationBean.addressR}"></h:inputText>
+	
+					<h:outputText value="#{messages.postcodeLabel}" />
+					<h:inputText value="#{registrationBean.postcodeR}"></h:inputText>
+	
+					<h:outputText value="#{messages.countryLabel}" />
+					<h:inputText value="#{registrationBean.countryR}"></h:inputText>
+	
+					<h:commandButton action="manageData" value="#{messages.cancelBtn}" />
+					<h:commandButton action="#{registrationBean.registerNewRestaurant}" value="#{messages.saveNewOwnerRegBtn}" />
+					<h:outputText value="#{registrationBean.newRestaurantInformation}" />
+				</h:panelGrid>
+				<br></br>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

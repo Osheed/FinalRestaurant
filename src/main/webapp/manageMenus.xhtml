@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<h:outputLabel style="font-weight:bold; margin-left:80px" value="#{messages.menusTitleLabel}"></h:outputLabel>
+	
+				<table style="border: 1px solid black; border-collapse: collapse; margin:15px 0 0 0;">
+					<thead>
+						<tr style="border: 1px solid black; padding: 8px; background:#0371A8;color:white;">
+							<th style="border: 1px solid black; padding: 8px;">Name Menu</th>
+							<th style="border: 1px solid black;padding: 8px;">Description</th>
+							<th style="border: 1px solid black;padding: 8px;">Price in CHF</th>
+							<th style="border: 1px solid black;padding: 8px;">Restaurant name</th>
+							<th style="border: 1px solid black;padding: 8px;"> </th>
+							<th style="border: 1px solid black;padding: 8px;"> </th>
+						</tr>
+					</thead>
+					<ui:repeat value="#{registrationBean.menus}" var="field">
+						<tr style="border: 1px solid black;">
+							<td style="border: 1px solid black;padding: 5px;">#{field.name}</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.description}</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.price}</td>
+							<td style="border: 1px solid black;padding: 8px;">#{field.restaurant.name_restaurant}</td>
+							<td><h:commandButton action="#{registrationBean.removeMenu(field)}" value="#{messages.removeBtn}" /></td>
+							<td><h:commandButton action="#{registrationBean.editMenu(field)}" value="#{messages.editBtn}" /></td>
+						</tr>
+					</ui:repeat>
+				</table>
+				<br></br>
+				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="3" layout="grid">
+					<h:commandButton action="addMenu" value="#{messages.addMenuBtn}" />
+					<h:commandButton action="#{registrationBean.logout}" value="#{messages.logoutBtn}" />
+					<h:commandButton action="manageData" value="#{messages.backBtn}" />
+				</h:panelGrid>
+				<h:outputText style="color:red;" value="#{registrationBean.manageMenuInformation}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

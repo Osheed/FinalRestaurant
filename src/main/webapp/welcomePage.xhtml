@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:outputStylesheet library="css" name="style.css" />
+			<h:panelGrid columns="1">
+				<h:outputLabel style="font-size:30px" value="#{messages.welcomeLabel}"></h:outputLabel>
+				<h:outputLabel value="#{messages.welcomeText}"></h:outputLabel>
+			</h:panelGrid>
+			<br></br>
+			<hr style="margin: 0; width: 100%; height: 2px; background: black; border: none;" />
+			<br></br>
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:inputText p:placeholder="your email..." value="#{registrationBean.emailLogin}"></h:inputText>
+					<h:inputSecret p:placeholder="your password..." value="#{registrationBean.passwordLogin}"></h:inputSecret>
+					<h:commandButton styleClass="login-btn" action="#{registrationBean.login}" value="Login" />
+					<h:commandButton action="register" value="#{messages.registerLabel}" />
+				</h:panelGrid>
+				<br></br>
+				<h:outputText style="color:red;" value="#{registrationBean.loginInformation}" />
+				<br></br>
+				<hr style="margin: 0; width: 100%; height: 2px; background: black; border: none;" />
+				<br></br>
+				<h:panelGrid columns="2">
+					<h:commandButton action="#{registrationBean.toRateRestaurants}" value="Rate Restaurants" />
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:outputStylesheet library="css" name="css/style.css" />
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<h:outputLabel style="font-weight:bold; margin-left:80px" value="#{messages.addMenuTitleLabel}"></h:outputLabel>
+				<h:panelGrid cellspacing="4" cellpadding="4" style="padding:15px 0 0 0;" columns="2" layout="grid">
+					<h:outputText value="#{messages.nameMenuLabel}" />
+					<h:inputText value="#{registrationBean.nameM}"></h:inputText>
+	
+					<h:outputText value="#{messages.descMenuLabel}" />
+					<h:inputText value="#{registrationBean.descriptionM}"></h:inputText>
+	
+					<h:outputText value="#{messages.priceMenuLabel}" />
+					<h:inputText value="#{registrationBean.priceM}"></h:inputText>
+					
+					<h:outputText value="Restaurant: "></h:outputText>
+		        	<h:selectOneMenu value="#{registrationBean.sourceRestaurantName}" valueChangeListener="#{registrationBean.updateRestaurants}" onchange="submit()" style="width: 201px; ">
+		        		<f:selectItems value="#{registrationBean.restaurantNames}"/>
+		        	</h:selectOneMenu>
+	
+					<h:commandButton action="#{registrationBean.saveMenu}" value="#{messages.saveBtn}" />
+					<h:commandButton action="#{registrationBean.cancel}" value="#{messages.cancelBtn}" />
+				</h:panelGrid>
+				<br></br>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
